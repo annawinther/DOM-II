@@ -11,14 +11,36 @@ const h2 = document.querySelector('h2');
 const h1 = document.querySelector('h1');
 const bottomContent = document.querySelectorAll('.destination > p');
 
-bottomContent.forEach((element) => {
-    element.addEventListener('click', 
-    event => event.target.style = "background-color: lightblue");
-    console.log('blue')
+window.addEventListener('keydown', (event)=>{
+    event.target.style ="color:red";
+});
+window.addEventListener('keyup', (event)=>{
+    event.target.style ="color: black";
 })
 
+
+// bottomContent.forEach((element) => {
+//     element.addEventListener('click', 
+//     event => event.target.style = "background-color: lightblue");
+//     console.log('blue')
+// })
+
+bottomContent.forEach(p => p.addEventListener("mouseover", greyscale));
+bottomContent.forEach(p => p.addEventListener("mouseout", resetColor));
+
+function greyscale(event){
+    event.target.style.filter = "greyscale(100%)";
+}
+
+function resetColor( event){
+    event.target.style.filter ="inherit";
+}
+
+
+
+// NAV
 const navBar = document.querySelectorAll('a');
-navBar.forEach((element) => {
+navBar.forEach( (element) => {
     element.addEventListener("mousemove", event => event.target.style = "color: purple");
     ;
 })
@@ -32,8 +54,23 @@ h2.addEventListener('click', (event) => {
 h1.addEventListener('reset', (event) => {
     event.target.style = "color:  red";
     console.log('RESET');
+})
+
+
+const img = document.querySelectorAll("img");
+
+img.forEach(image => image.addEventListener("mouseover", grayscale));
+img.forEach(image => image.addEventListener("mouseout", resetColor));
+
+// Callbacks
+function grayscale (event) {
+    event.target.style.filter = "grayscale(60%)";
 }
-)
+function resetColor (event) {
+    event.target.style.filter = "inherit";
+}
+
+
 // body.addEventListener('resize', () =>{
 //     console.log('DOCUMENT IS RESIZED');
 // })
