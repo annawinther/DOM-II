@@ -2,7 +2,7 @@
 
 // Making variables
 const body = document.querySelector('body');
-
+// const navCont = document.querySelector('.nav-container');
 const link1 = document.querySelector(' a:nth-child(1)');
 const link2 = document.querySelector(' a:nth-child(2)');
 const link3 = document.querySelector(' a:nth-child(3)');
@@ -10,6 +10,27 @@ const link4 = document.querySelector(' a:nth-child(4)');
 const h2 = document.querySelector('h2');
 const h1 = document.querySelector('h1');
 const bottomContent = document.querySelectorAll('.destination > p');
+const h2All = document.querySelectorAll('h2');
+const img = document.querySelectorAll("img");
+
+
+// navCont.addEventListener('mouseover', event =>{ 
+//     event.target.style = "background-color: red";
+// })
+// navCont.addEventListener('mouseout', event =>{ 
+//     event.target.style = "background-color: white";
+// })
+h1.addEventListener('focus', (event) => {
+    event.target.style.backgroun = "pink";
+    console.log('this should be focused')
+});
+
+h2All.forEach(element => element.addEventListener('mousedown', event => event.target.style = "color: red"));
+h2All.forEach(element => 
+    element.addEventListener('mouseup', event => event.target.style = "color: pink"));
+
+
+// KEY UP KEY DOWN
 
 window.addEventListener('keydown', (event)=>{
     event.target.style ="color:red";
@@ -18,6 +39,17 @@ window.addEventListener('keyup', (event)=>{
     event.target.style ="color: black";
 })
 
+// let ticking = false;
+// window.addEventListener('scroll', function(e) {
+//     last_known_scroll_position = window.scrollY;
+//   if (!ticking) {
+//     window.requestAnimationFrame(function() {
+//       doSomething(last_known_scroll_position);
+//       ticking = false;
+//     });
+//     ticking = true;
+//   };
+// })
 
 // bottomContent.forEach((element) => {
 //     element.addEventListener('click', 
@@ -37,7 +69,6 @@ function resetColor( event){
 }
 
 
-
 // NAV
 const navBar = document.querySelectorAll('a');
 navBar.forEach( (element) => {
@@ -45,55 +76,23 @@ navBar.forEach( (element) => {
     ;
 })
 
-// Create event listeners
-h2.addEventListener('click', (event) => {
-    event.target.style = "color: green";
-    console.log('H2 CLICKED');
-});
+// EVENT FOR EACH NAV BAR ELEMENT WHEN MOUSE HOVER OVER.
 
-h1.addEventListener('reset', (event) => {
-    event.target.style = "color:  red";
-    console.log('RESET');
+link1.addEventListener('mouseover', (event) =>{
+    //event.target.style = 'color: red';
+   console.log('MOUSE OVER HOME');
+})
+link2.addEventListener('mouseover', ()=>{
+   
+   console.log('MOUSE OVER ABOUT US')
 })
 
-
-const img = document.querySelectorAll("img");
-
-img.forEach(image => image.addEventListener("mouseover", grayscale));
-img.forEach(image => image.addEventListener("mouseout", resetColor));
-
-// Callbacks
-function grayscale (event) {
-    event.target.style.filter = "grayscale(60%)";
-}
-function resetColor (event) {
-    event.target.style.filter = "inherit";
-}
-
-
-// body.addEventListener('resize', () =>{
-//     console.log('DOCUMENT IS RESIZED');
-// })
-
-// body.addEventListener('select', () => {
-//     console.log('TEXT IS SELECTED');
-// })
-
-
-// function selectText (event) {
-//     const logo = document.getElementById('logo-heading')
-//     const selection = event.target.value.substring(event.target.selectionStart, event.target.selectionEnd);
-//     logo.textContent = `You selected ${selection}`;
-// }
-// const h1 = document.querySelector('h1');
-// h1.addEventListener('select',selectText);
-
-let heading = document.querySelector(".text-content");
-heading.addEventListener('select', (event) => {
-    event.target.style = "color: red";
+link3.addEventListener('mouseover', ()=>{
+   console.log('MOUSE OVER BLOG');
 })
-
-
+link4.addEventListener('mouseover', ()=>{
+   console.log('MOUSE OVER CONTACT');
+})
 
 // EVENT WHEN HOVER OVER -> PRINTS OUT FOR ALL OF THEM
 
@@ -109,21 +108,54 @@ heading.addEventListener('select', (event) => {
 //     console.log('MOUSE OVER CONTACT');
 // }
 
-// EVENT FOR EACH NAV BAR ELEMENT WHEN MOUSE HOVER OVER.
 
-link1.addEventListener('mouseover', (event) =>{
-     //event.target.style = 'color: red';
-    console.log('MOUSE OVER HOME');
-})
-link2.addEventListener('mouseover', ()=>{
-    
-    console.log('MOUSE OVER ABOUT US')
+// Create event listeners
+h2.addEventListener('click', (event) => {
+    event.target.style = "color: green";
+    console.log('H2 CLICKED');
+});
+
+
+
+// IMAGES
+
+img.forEach(image => image.addEventListener("mouseover", grayscale));
+img.forEach(image => image.addEventListener("mouseout", resetColor));
+
+// Callbacks
+function grayscale (event) {
+    event.target.style.filter = "grayscale(60%)";
+}
+function resetColor (event) {
+    event.target.style.filter = "inherit";
+}
+
+ window.addEventListener('resize', () =>{
+    console.log('SUPER RESIZE ME');
+ })
+
+ window.addEventListener('scroll', () =>{
+    console.log('THEY SEE ME SCROLLING, THEY HATING');
+ })
+
+window.addEventListener('beforeprint', () => {
+     console.log('USER PRESSED PRINT');
 })
 
-link3.addEventListener('mouseover', ()=>{
-    console.log('MOUSE OVER BLOG');
+window.addEventListener('afterprint', () => {
+    console.log('USER CLOSED PRINT DIALOG');
 })
-link4.addEventListener('mouseover', ()=>{
-    console.log('MOUSE OVER CONTACT');
+
+window.addEventListener('load', () => {
+    console.log('ITS LOADING');
 })
+
+
+
+let heading = document.querySelector(".text-content");
+heading.addEventListener('select', (event) => {
+    event.target.style = "color: red";
+})
+
+
 
