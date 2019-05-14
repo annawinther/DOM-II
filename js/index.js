@@ -8,11 +8,19 @@ const link2 = document.querySelector(' a:nth-child(2)');
 const link3 = document.querySelector(' a:nth-child(3)');
 const link4 = document.querySelector(' a:nth-child(4)');
 const h2 = document.querySelector('h2');
-//const h1 = document.querySelector('h1');
+const h1 = document.querySelector('h1');
+const bottomContent = document.querySelectorAll('.destination > p');
+
+bottomContent.forEach((element) => {
+    element.addEventListener('click', 
+    event => event.target.style = "background-color: lightblue");
+    console.log('blue')
+})
 
 const navBar = document.querySelectorAll('a');
 navBar.forEach((element) => {
-    element.addEventListener("mouseover", event => event.target.style = "color: purple")
+    element.addEventListener("mousemove", event => event.target.style = "color: purple");
+    ;
 })
 
 // Create event listeners
@@ -21,6 +29,11 @@ h2.addEventListener('click', (event) => {
     console.log('H2 CLICKED');
 });
 
+h1.addEventListener('reset', (event) => {
+    event.target.style = "color:  red";
+    console.log('RESET');
+}
+)
 // body.addEventListener('resize', () =>{
 //     console.log('DOCUMENT IS RESIZED');
 // })
@@ -30,14 +43,18 @@ h2.addEventListener('click', (event) => {
 // })
 
 
-function selectText (event) {
-    const logo = document.getElementById('logo-heading')
-    const selection = event.target.value.substring(event.target.selectionStart, event.target.selectionEnd);
-    logo.textContent = `You selected ${selection}`;
-}
-const h1 = document.querySelector('h1');
-h1.addEventListener('select',selectText);
+// function selectText (event) {
+//     const logo = document.getElementById('logo-heading')
+//     const selection = event.target.value.substring(event.target.selectionStart, event.target.selectionEnd);
+//     logo.textContent = `You selected ${selection}`;
+// }
+// const h1 = document.querySelector('h1');
+// h1.addEventListener('select',selectText);
 
+let heading = document.querySelector(".text-content");
+heading.addEventListener('select', (event) => {
+    event.target.style = "color: red";
+})
 
 
 
@@ -62,11 +79,14 @@ link1.addEventListener('mouseover', (event) =>{
     console.log('MOUSE OVER HOME');
 })
 link2.addEventListener('mouseover', ()=>{
+    
     console.log('MOUSE OVER ABOUT US')
 })
+
 link3.addEventListener('mouseover', ()=>{
     console.log('MOUSE OVER BLOG');
 })
 link4.addEventListener('mouseover', ()=>{
     console.log('MOUSE OVER CONTACT');
 })
+
