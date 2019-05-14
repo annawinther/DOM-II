@@ -12,7 +12,7 @@ const h1 = document.querySelector('h1');
 const bottomContent = document.querySelectorAll('.destination > p');
 const h2All = document.querySelectorAll('h2');
 const img = document.querySelectorAll("img");
-
+const button = document.querySelectorAll('.btn');
 
 // navCont.addEventListener('mouseover', event =>{ 
 //     event.target.style = "background-color: red";
@@ -29,6 +29,7 @@ h2All.forEach(element => element.addEventListener('mousedown', event => event.ta
 h2All.forEach(element => 
     element.addEventListener('mouseup', event => event.target.style = "color: pink"));
 
+button.forEach(element => element.addEventListener('focus', event => event.target.backgroundcolor = 'blue'))
 
 // KEY UP KEY DOWN
 
@@ -37,19 +38,7 @@ window.addEventListener('keydown', (event)=>{
 });
 window.addEventListener('keyup', (event)=>{
     event.target.style ="color: black";
-})
-
-// let ticking = false;
-// window.addEventListener('scroll', function(e) {
-//     last_known_scroll_position = window.scrollY;
-//   if (!ticking) {
-//     window.requestAnimationFrame(function() {
-//       doSomething(last_known_scroll_position);
-//       ticking = false;
-//     });
-//     ticking = true;
-//   };
-// })
+});
 
 // bottomContent.forEach((element) => {
 //     element.addEventListener('click', 
@@ -78,35 +67,38 @@ navBar.forEach( (element) => {
 
 // EVENT FOR EACH NAV BAR ELEMENT WHEN MOUSE HOVER OVER.
 
-link1.addEventListener('mouseover', (event) =>{
-    //event.target.style = 'color: red';
-   console.log('MOUSE OVER HOME');
-})
-link2.addEventListener('mouseover', ()=>{
-   
-   console.log('MOUSE OVER ABOUT US')
-})
+// link1.addEventListener('mouseover', (event) =>{
+//    console.log('MOUSE OVER HOME');
+// })
 
-link3.addEventListener('mouseover', ()=>{
-   console.log('MOUSE OVER BLOG');
-})
-link4.addEventListener('mouseover', ()=>{
-   console.log('MOUSE OVER CONTACT');
-})
+// link2.addEventListener('mouseover', ()=>{
+//    console.log('MOUSE OVER ABOUT US')
+// })
+
+// link3.addEventListener('mouseover', ()=>{
+//    console.log('MOUSE OVER BLOG');
+// })
+
+// link4.addEventListener('mouseover', ()=>{
+//    console.log('MOUSE OVER CONTACT');
+// })
 
 // EVENT WHEN HOVER OVER -> PRINTS OUT FOR ALL OF THEM
 
-// link1.addEventListener('mouseover', listener)
-// link2.addEventListener('mouseover', listener)
-// link3.addEventListener('mouseover', listener)
-// link4.addEventListener('mouseover', listener)
+link1.addEventListener('mouseover', listener, {capture: false});
+link2.addEventListener('mouseover', listener, { capture: false });
+link3.addEventListener('mouseover', event => {
+    console.log('ABOUT TO SHORT-CIRCUIT BUBBLING');
+  event.stopPropagation();
+});
+link4.addEventListener('mouseover', listener,  {capture: false });
 
-// function listener (event){
-//     console.log('MOUSE OVER HOME');
-//     console.log('MOUSE OVER ABOUT US');
-//     console.log('MOUSE OVER BLOG');
-//     console.log('MOUSE OVER CONTACT');
-// }
+function listener (event){
+    console.log('MOUSE OVER HOME', event.target);
+    console.log('MOUSE OVER ABOUT US', event.target);
+    console.log('MOUSE OVER BLOG', event.currentTarget);
+    console.log('MOUSE OVER CONTACT', event.currentTarget);
+}
 
 
 // Create event listeners
