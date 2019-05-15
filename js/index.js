@@ -20,6 +20,7 @@ const button = document.querySelectorAll('.btn');
 // navCont.addEventListener('mouseout', event =>{ 
 //     event.target.style = "background-color: white";
 // })
+
 h1.addEventListener('focus', (event) => {
     event.target.style.backgroun = "pink";
     console.log('this should be focused')
@@ -29,7 +30,7 @@ h2All.forEach(element => element.addEventListener('mousedown', event => event.ta
 h2All.forEach(element => 
     element.addEventListener('mouseup', event => event.target.style = "color: pink"));
 
-button.forEach(element => element.addEventListener('focus', event => event.target.backgroundcolor = 'blue'))
+button.forEach(element => element.addEventListener('click', event => event.target.style = "background-color: pink"));
 
 // KEY UP KEY DOWN
 
@@ -108,7 +109,6 @@ h2.addEventListener('click', (event) => {
 });
 
 
-
 // IMAGES
 
 img.forEach(image => image.addEventListener("mouseover", grayscale));
@@ -122,7 +122,8 @@ function resetColor (event) {
     event.target.style.filter = "inherit";
 }
 
- window.addEventListener('resize', () =>{
+ window.addEventListener('resize', (event) =>{
+    //event.target.style = 'background-color:grey';
     console.log('SUPER RESIZE ME');
  })
 
@@ -141,7 +142,6 @@ window.addEventListener('afterprint', () => {
 window.addEventListener('load', () => {
     console.log('ITS LOADING');
 })
-
 
 
 let heading = document.querySelector(".text-content");
